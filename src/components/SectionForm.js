@@ -4,6 +4,7 @@ import _ from 'lodash';
 import emailjs from 'emailjs-com'
 import {markdownify} from '../utils';
 import FormField from './FormField';
+import { navigate } from 'gatsby';
 
 export default class SectionForm extends React.Component {
     constructor(props) {
@@ -14,22 +15,23 @@ export default class SectionForm extends React.Component {
 
     submit(section_id) {
         if (section_id && section_id === 'contact-form') {
-            emailjs.init(process.env.EMAILJS_USER); // TODO: Check if we can pass this in a secure way
+            emailjs.init(process.env.GATSBY_EMAILJS_USER); // TODO: Check if we can pass this in a secure way
 
             const name = _.get(this.state, 'name', null);
             const message = _.get(this.state, 'message', null)
 
             if (name && message) {
                 emailjs.send(
-                    process.env.EMAILJS_SERVICE, 
-                    process.env.EMAILJS_TEMPLATE,
+                    process.env.GATSBY_EMAILJS_SERVICE, 
+                    process.env.GATSBY_EMAILJS_TEMPLATE,
                     { 
                       from_name: name, 
                       message: message, 
                       subject: _.get(this.state, 'subject', null) 
                     })
                     .then(error => {
-                        console.log('Email successfully sent!')
+                        console.log('Email successfully sent!');
+                        navigate('/thank-you');
                     })
                     .catch(err => console.error('Oh well, you failed. Here some thoughts on the error that occured:', err));
             }
