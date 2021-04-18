@@ -33,14 +33,14 @@ export default class FormField extends React.Component {
               {_.get(field, 'label', null) && (
               <label htmlFor={_.get(field, 'name', null)}>{_.get(field, 'label', null)}</label>
               )}
-              <textarea name={_.get(field, 'name', null)} id={_.get(field, 'name', null)} rows="7"{...(_.get(field, 'default_value', null) ? ({placeholder: _.get(field, 'default_value', null)}) : null)}{...(_.get(field, 'is_required', null) ? ({required: true}) : null)}/>
+              <textarea name={_.get(field, 'name', null)} id={_.get(field, 'name', null)} rows="7"{...(_.get(field, 'default_value', null) ? ({placeholder: _.get(field, 'default_value', null)}) : null)}{...(_.get(field, 'is_required', null) ? ({required: true}) : null)} onChange={_.get(this.props, 'onChange', null)}/>
             </div>
             ) : 
             <div className="form-group">
               {_.get(field, 'label', null) && (
               <label htmlFor={_.get(field, 'name', null)}>{_.get(field, 'label', null)}</label>
               )}
-              <input type={_.get(field, 'input_type', null)} name={_.get(field, 'name', null)} id={_.get(field, 'name', null)}{...(_.get(field, 'default_value', null) ? ({placeholder: _.get(field, 'default_value', null)}) : null)}{...(_.get(field, 'is_required', null) ? ({required: true}) : null)} />
+              <input type={_.get(field, 'input_type', null)} name={_.get(field, 'name', null)} id={_.get(field, 'name', null)}{...(_.get(field, 'default_value', null) ? ({placeholder: _.get(field, 'default_value', null)}) : null) }{...(_.get(field, 'is_required', null) ? ({required: true}) : null)} onChange={_.get(this.props, 'onChange', null)}/>
             </div>
             ))
         );
