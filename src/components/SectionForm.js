@@ -4,7 +4,6 @@ import _ from 'lodash';
 import emailjs from 'emailjs-com'
 import {markdownify} from '../utils';
 import FormField from './FormField';
-import { navigate } from 'gatsby';
 
 export default class SectionForm extends React.Component {
     constructor(props) {
@@ -13,7 +12,7 @@ export default class SectionForm extends React.Component {
         this.state = {};
     }
 
-    submit(section_id) {
+    submit(event, section_id) {
         if (section_id && section_id === 'contact-form') {
             emailjs.init(process.env.GATSBY_EMAILJS_USER); // TODO: Check if we can pass this in a secure way
 
@@ -31,9 +30,10 @@ export default class SectionForm extends React.Component {
                     })
                     .then(error => {
                         console.log('Email successfully sent!');
-                        navigate('/thank-you');
                     })
                     .catch(err => console.error('Oh well, you failed. Here some thoughts on the error that occured:', err));
+            } else {
+                event.preventDefault();
             }
         }
     }
@@ -60,7 +60,7 @@ export default class SectionForm extends React.Component {
                 {_.get(section, 'content', null) && (
                 markdownify(_.get(section, 'content', null))
                 )}
-                <form name={_.get(section, 'form_id', null)} onSubmit={(e) => {this.submit(sectionId); e.preventDefault();}} id={_.get(section, 'form_id', null)} {...(_.get(section, 'form_action', null) ? ({action: _.get(section, 'form_action', null)}) : null)}method="POST" data-netlify="true" data-netlify-honeypot="bot-field">
+                <form name={_.get(section, 'form_id', null)} onSubmit={(e) => {this.submit(e, sectionId);}} id={_.get(section, 'form_id', null)} {...(_.get(section, 'form_action', null) ? ({action: _.get(section, 'form_action', null)}) : null)}method="POST" data-netlify="true" data-netlify-honeypot="bot-field">
                   <div className="screen-reader-text">
                     <label>Don't fill this out if you're human: <input name="bot-field" /></label>
                   </div>
