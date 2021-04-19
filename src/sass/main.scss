@@ -19,6 +19,10 @@ $palette: (
 );
 
 @import "imports/functions";
+
+@import "../../static/css/fontawesome.min.css";
+@import "../../static/css/brands.min.css";
+
 @import "imports/reset";
 @import "imports/general";
 @import "imports/icons";

@@ -32,21 +32,14 @@
                 "label": "Twitter",
                 "url": "https://twitter.com/Alb_Erc",
                 "style": "icon",
-                "icon_class": "twitter",
+                "icon_class": "fa-twitter",
                 "new_window": true
             },
             {
                 "label": "GitHub",
                 "url": "https://github.com/albertowar",
                 "style": "icon",
-                "icon_class": "github",
-                "new_window": true
-            },
-            {
-                "label": "DEV",
-                "url": "https://dev.to/albertowar",
-                "style": "icon",
-                "icon_class": "dev",
+                "icon_class": "fa-github",
                 "new_window": true
             },
             {
@@ -55,7 +48,14 @@
                 "style": "icon",
                 "icon_class": "fa-linkedin",
                 "new_window": true
-            }
+              },
+              {
+                  "label": "DEV",
+                  "url": "https://dev.to/albertowar",
+                  "style": "icon",
+                  "icon_class": "fa-dev",
+                  "new_window": true
+              }
         ]
     },
     "footer": {

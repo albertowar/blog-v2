@@ -477,16 +477,16 @@ models:
         name: icon_class
         label: Icon
         options:
-          - dev
-          - facebook
-          - github
-          - instagram
-          - linkedin
-          - pinterest
-          - reddit
-          - twitter
-          - vimeo
-          - youtube
+          - fa-dev
+          - fa-facebook
+          - fa-github
+          - fa-instagram
+          - fa-linkedin
+          - fa-pinterest
+          - fa-reddit
+          - fa-twitter
+          - fa-vimeo
+          - fa-youtube
         default: dev
       - type: boolean
         name: new_window
