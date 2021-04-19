@@ -1,4 +1,5 @@
 {
+    "description": "Alberto'personal blog",
     "layout_style": "overflow",
     "palette": "blue",
     "header": {
@@ -17,16 +18,6 @@
             {
                 "label": "Blog",
                 "url": "/blog/",
-                "style": "link"
-            },
-            {
-                "label": "Style Guide",
-                "url": "/style-guide/",
-                "style": "link"
-            },
-            {
-                "label": "About",
-                "url": "/about/",
                 "style": "link"
             },
             {
@@ -56,6 +47,13 @@
                 "url": "https://dev.to/albertowar",
                 "style": "icon",
                 "icon_class": "dev",
+                "new_window": true
+            },
+            {
+                "label": "Linkedin",
+                "url": "https://www.linkedin.com/in/albertowar/",
+                "style": "icon",
+                "icon_class": "fa-linkedin",
                 "new_window": true
             }
         ]

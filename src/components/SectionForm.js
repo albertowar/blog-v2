@@ -2,6 +2,7 @@ import React from 'react';
 import _ from 'lodash';
 
 import emailjs from 'emailjs-com'
+import { navigate } from 'gatsby';
 import {markdownify} from '../utils';
 import FormField from './FormField';
 
@@ -30,6 +31,7 @@ export default class SectionForm extends React.Component {
                     })
                     .then(error => {
                         console.log('Email successfully sent!');
+                        navigate('/');
                     })
                     .catch(err => console.error('Oh well, you failed. Here some thoughts on the error that occured:', err));
             }
@@ -41,7 +43,6 @@ export default class SectionForm extends React.Component {
             const newState = Object.assign({}, this.state);
             newState[field_name] = field_value;
             this.setState(newState);
-            console.log(`Updated ${field_name} to ${field_value}`);
         }
     }
 
@@ -58,7 +59,7 @@ export default class SectionForm extends React.Component {
                 {_.get(section, 'content', null) && (
                 markdownify(_.get(section, 'content', null))
                 )}
-                <form name={_.get(section, 'form_id', null)} onSubmit={(e) => { this.submit(e, sectionId); event.preventDefault(); }} id={_.get(section, 'form_id', null)} {...(_.get(section, 'form_action', null) ? ({action: _.get(section, 'form_action', null)}) : null)}method="GET" data-netlify="true" data-netlify-honeypot="bot-field">
+                <form name={_.get(section, 'form_id', null)} onSubmit={(e) => { this.submit(sectionId); e.preventDefault(); }} id={_.get(section, 'form_id', null)} >
                   <div className="screen-reader-text">
                     <label>Don't fill this out if you're human: <input name="bot-field" /></label>
                   </div>
